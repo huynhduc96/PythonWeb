@@ -20,7 +20,7 @@ class Book(models.Model):
     price = models.IntegerField(default=0)
     category = models.ForeignKey(Category, on_delete=models.SET(0))
     publish_date = models.DateTimeField()
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='media/books')
     number_page = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

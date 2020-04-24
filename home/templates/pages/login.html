@@ -1,0 +1,34 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="col-lg-6 col-12">
+        <div class="my__account__wrapper">
+            <h3 class="account__title">Login</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {% for key, value in form.errors.items %}
+                    {{ value }}
+                {% endfor %}
+                <div class="account__form">
+                    <div class="input__box">
+                        <label>Username <span>*</span></label>
+                        <p>{{ form.username }}</p>
+                    </div>
+                    <div class="input__box">
+                        <label>Password<span>*</span></label>
+                        <p>{{ form.password }}</p>
+                    </div>
+                    <div class="form__btn">
+                        <input type="hidden" name="next" value="/"/>
+                        <input type="submit" value="Login"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+

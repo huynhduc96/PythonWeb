@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home | Bookshop Responsive Bootstrap4 Template</title>
+    <title>Bookshop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicons -->
@@ -54,7 +54,7 @@
                 <div class="col-lg-8 d-none d-lg-block">
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
-                            <li class="drop with--one--item"><a href="index.html">Home</a>
+                            <li class="drop with--one--item"><a href="{% url 'home' %}">Home</a>
 
                             </li>
                             <li class="drop"><a href="#">Shop</a>
@@ -155,67 +155,73 @@
                         <li class="setting__bar__icon"><a class="setting__active" href="#"></a>
                             <div class="searchbar__content setting__block">
                                 <div class="content-inner">
+{#                                    <div class="switcher-currency">#}
+{#                                        <strong class="label switcher-label">#}
+{#                                            <span>Currency</span>#}
+{#                                        </strong>#}
+{#                                        <div class="switcher-options">#}
+{#                                            <div class="switcher-currency-trigger">#}
+{#                                                <span class="currency-trigger">USD - US Dollar</span>#}
+{#                                                <ul class="switcher-dropdown">#}
+{#                                                    <li>GBP - British Pound Sterling</li>#}
+{#                                                    <li>EUR - Euro</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="switcher-currency">#}
+{#                                        <strong class="label switcher-label">#}
+{#                                            <span>Language</span>#}
+{#                                        </strong>#}
+{#                                        <div class="switcher-options">#}
+{#                                            <div class="switcher-currency-trigger">#}
+{#                                                <span class="currency-trigger">English01</span>#}
+{#                                                <ul class="switcher-dropdown">#}
+{#                                                    <li>English02</li>#}
+{#                                                    <li>English03</li>#}
+{#                                                    <li>English04</li>#}
+{#                                                    <li>English05</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="switcher-currency">#}
+{#                                        <strong class="label switcher-label">#}
+{#                                            <span>Select Store</span>#}
+{#                                        </strong>#}
+{#                                        <div class="switcher-options">#}
+{#                                            <div class="switcher-currency-trigger">#}
+{#                                                <span class="currency-trigger">Fashion Store</span>#}
+{#                                                <ul class="switcher-dropdown">#}
+{#                                                    <li>Furniture</li>#}
+{#                                                    <li>Shoes</li>#}
+{#                                                    <li>Speaker Store</li>#}
+{#                                                    <li>Furniture</li>#}
+{#                                                </ul>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
                                     <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Currency</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">USD - US Dollar</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>GBP - British Pound Sterling</li>
-                                                    <li>EUR - Euro</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Language</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">English01</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>English02</li>
-                                                    <li>English03</li>
-                                                    <li>English04</li>
-                                                    <li>English05</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>Select Store</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">Fashion Store</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>Furniture</li>
-                                                    <li>Shoes</li>
-                                                    <li>Speaker Store</li>
-                                                    <li>Furniture</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>My Account</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <div class="setting__menu">
-                                                    <span><a href="#">Compare Product</a></span>
-                                                    <span><a href="#">My Account</a></span>
-                                                    <span><a href="#">My Wishlist</a></span>
-                                                    <span><a href="#">Sign In</a></span>
-                                                    <span><a href="#">Create An Account</a></span>
+                                        {% if user.username %}
+                                            <strong class="label switcher-label">
+                                                <span>{{ user.username }}</span>
+                                            </strong>
+                                            <div class="switcher-options">
+                                                <div class="switcher-currency-trigger">
+                                                    <div class="setting__menu">
+                                                        <span><a href="{% url 'logout' %}">Logout</a></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        {% else %}
+                                            <strong class="label switcher-label">
+                                                <span><a href="{% url 'register' %}">Register Now</a></span>
+                                            </strong>
+                                            <strong class="label switcher-label">
+                                                <span><a href="{% url 'login' %}">Login</a></span>
+                                            </strong>
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>
@@ -226,21 +232,21 @@
         </div>
     </header>
     <!-- //Header -->
-		<!-- Start Search Popup -->
-		<div class="brown--color box-search-content search_active block-bg close__top">
-			<form id="search_mini_form" class="minisearch" action="#">
-				<div class="field__search">
-					<input type="text" placeholder="Search entire store here...">
-					<div class="action">
-						<a href="#"><i class="zmdi zmdi-search"></i></a>
-					</div>
-				</div>
-			</form>
-			<div class="close__wrap">
-				<span>close</span>
-			</div>
-		</div>
-		<!-- End Search Popup -->
+    <!-- Start Search Popup -->
+    <div class="brown--color box-search-content search_active block-bg close__top">
+        <form id="search_mini_form" class="minisearch" action="#">
+            <div class="field__search">
+                <input type="text" placeholder="Search entire store here...">
+                <div class="action">
+                    <a href="#"><i class="zmdi zmdi-search"></i></a>
+                </div>
+            </div>
+        </form>
+        <div class="close__wrap">
+            <span>close</span>
+        </div>
+    </div>
+    <!-- End Search Popup -->
     <!-- Start Slider area -->
     <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
         <!-- Start Single Slide -->

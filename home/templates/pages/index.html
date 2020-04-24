@@ -20,10 +20,10 @@
                     <div class="product product__style--3">
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="product__thumb">
-                                <a class="first__img" href="single-product.html"><img
+                                <a class="first__img" href="{% url 'book_detail' book.id %}"><img
                                         src="/media/{{ book.image }}" alt="product image"></a>
-                                <a class="second__img animation1" href="single-product.html"><img
-                                        src="/media/{{ book.image }}" alt="product image"></a>
+                                <a class="second__img animation1" href="{% url 'book_detail' book.id %}"><img
+                                        src="{% static 'images/books/2.jpg' %}" alt="product image"></a>
                                 <div class="hot__box">
                                     <span class="hot-label">BEST SALLER</span>
                                 </div>
@@ -72,13 +72,13 @@
                     {% for book in Books %}
                     <div class="list__view">
                         <div class="thumb">
-                            <a class="first__img" href="single-product.html"><img src="{% static 'images/books/1.jpg' %}"
+                            <a class="first__img" href="{% url 'book_detail' book.id %}"><img src="/media/{{ book.image }}"
                                                                                   alt="product images"></a>
-                            <a class="second__img animation1" href="single-product.html"><img
+                            <a class="second__img animation1" href="{% url 'book_detail' book.id %}"><img
                                     src="{% static 'images/books/2.jpg' %}" alt="product images"></a>
                         </div>
                         <div class="content">
-                            <h2><a href="single-product.html">{{ book.title }}</a></h2>
+                            <h2><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></h2>
                             <ul class="rating d-flex">
                                 <li class="on"><i class="fa fa-star-o"></i></li>
                                 <li class="on"><i class="fa fa-star-o"></i></li>
